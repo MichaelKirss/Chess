@@ -1,5 +1,5 @@
-public class Horse extends ChessPiece{
-    public Horse(String color){
+public class Pawn extends ChessPiece{
+    public Pawn (String color){
         super (color);
     }
     @Override
@@ -8,25 +8,23 @@ public class Horse extends ChessPiece{
     }
     @Override
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn){
-        int [][] rules   =new int[][] {{-2,-1},{-2,1},{2,-1},{2,1},{-1,-2},{-1,2},{1,-2},{1,2}};
+        int [][] rules = new int[][] {{1,0},{2,0}};
         int posLine;
         int posColumn;
         int board = 7;
-        for (int i = 0; i < rules.length; i++) {
-            posLine = line + rules[i][0];
-            posColumn = column + rules[i][1];
+        posLine = line + rules[0][0];
+        posColumn = column + rules[0][1];
             if (posLine < 0 || posColumn < 0 ||
-                posLine > board || posColumn > board){
+                    posLine > board || posColumn > board) {
                 return false;
             }
-            if (toLine == posLine && toColumn == posColumn){
+            if (toLine == posLine && toColumn == posColumn) {
                 return true;
             }
-        }
-        return false;
+                return false;
     }
     @Override
     public String getSymbol(){
-        return "H";
+        return "P";
     }
 }
