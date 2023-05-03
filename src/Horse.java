@@ -8,15 +8,23 @@ public class Horse extends ChessPiece{
     }
     @Override
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn){
-        int [][] rules   =new int[][] {{-3,-1},{-3,1},{3,-1},{3,1},{-1,-3},{-1,3},{1,-3},{1,3}};
+        int [][] rules   =new int[][] {{-2,-1},{-2,1},{2,-1},{2,1},{-1,-2},{-1,2},{1,-2},{1,2}};
+        int posLine;
+        int posColumn;
+        int board = 7;
+        boolean result;
         for (int i = 0; i < rules.length; i++) {
-            int pos1 = line + rules[i][0];
-
-
+            posLine = line + rules[i][0];
+            posColumn = column + rules[i][1];
+            if (posLine < 0 || posColumn < 0 ||
+                posLine > board || posColumn > board){
+                return false;
+            }
+            if (toLine == posLine && toColumn == posColumn){
+                return true;
+            }
         }
-
-        boolean result = true;
-        return result;
+        return false;
     }
     @Override
     public String getSymbol(){
