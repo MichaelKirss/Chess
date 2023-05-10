@@ -20,6 +20,19 @@ public class Rook extends ChessPiece{
         } else if (toLine != line && toColumn == column) {
             return true;
         }
+        if (chessBoard.board[toLine][toColumn] == null){
+            return true;
+        }
+        if (chessBoard.nowPlayerColor().equals("White")) {
+            if (chessBoard.board[toLine][toColumn] != null && chessBoard.board.equals(this.getColor().equals("Black")) ){
+                return true;
+            }
+        }
+        if (chessBoard.nowPlayerColor().equals("Black")) {
+            if (chessBoard.board[toLine][toColumn] != null && chessBoard.board.equals(this.getColor().equals("White")) ){
+                return true;
+            }
+        }
         return false;
     }
     @Override
